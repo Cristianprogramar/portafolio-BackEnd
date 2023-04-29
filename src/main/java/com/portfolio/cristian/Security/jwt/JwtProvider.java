@@ -43,23 +43,23 @@ public class JwtProvider {
         } 
         
         catch (MalformedJwtException e) {
-            logger.error("El token está mal formado");
+            logger.error("El token está mal formado.");
         } 
         
         catch (UnsupportedJwtException e) {
-            logger.error("Este token no es soportado");
+            logger.error("Este token no es soportado.");
         } 
         
         catch (ExpiredJwtException e) {
-            logger.error("El token expiro");
+            logger.error("El token expiro.");
         } 
         
         catch (IllegalArgumentException e) {
-            logger.error("El token es invalido");
+            logger.error("El token es invalido.");
         } 
         
         catch (SignatureException e) {
-            logger.error("La firma es invalida");
+            logger.error("La firma es invalida.");
         }
         return false;
     }
