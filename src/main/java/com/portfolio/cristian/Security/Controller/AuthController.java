@@ -16,8 +16,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -80,22 +82,33 @@ public class AuthController {
         return new ResponseEntity(new Mensaje("El usuario se guardo."), HttpStatus.CREATED);
     }
 
+    //Sistema de login
     @PostMapping("/login")
     public ResponseEntity<JwtDto> login(@Valid @RequestBody LoginUsuario loginUsuario, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return new ResponseEntity(new Mensaje("El campo está mal puesto."), HttpStatus.BAD_REQUEST);
+
+        try {
+            Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginUsuario.getNombreUsuario(), loginUsuario.getPassword()));
+
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+
+            String jwt = jwtProvider.generateToken(authentication);
+
+            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+
+            JwtDto jwtDto = new JwtDto(jwt, userDetails.getUsername(), userDetails.getAuthorities());
+
+            return new ResponseEntity(jwtDto, HttpStatus.OK);
+        } 
+        
+        //Manejo de errores al loguearse
+        catch (AuthenticationException ex) {
+            if (ex instanceof BadCredentialsException) {
+                return new ResponseEntity(new Mensaje("Contraseña incorrecta."), HttpStatus.UNAUTHORIZED);
+            } 
+            
+            else {
+                return new ResponseEntity(new Mensaje("No se pudo encontrar tu cuenta."), HttpStatus.UNAUTHORIZED);
+            }
         }
-        Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                loginUsuario.getNombreUsuario(), loginUsuario.getPassword()));
-
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-
-        String jwt = jwtProvider.generateToken(authentication);
-
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-
-        JwtDto jwtDto = new JwtDto(jwt, userDetails.getUsername(), userDetails.getAuthorities());
-
-        return new ResponseEntity(jwtDto, HttpStatus.OK);
     }
 }
