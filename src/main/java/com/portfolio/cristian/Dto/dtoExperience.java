@@ -8,7 +8,7 @@ public class dtoExperience {
     @NotBlank
     private String descriptionE;
     
-    //Constructor
+    //Constructores
     public dtoExperience() {
     }
 

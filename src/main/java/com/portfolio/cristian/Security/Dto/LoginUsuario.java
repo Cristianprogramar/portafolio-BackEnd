@@ -9,7 +9,7 @@ public class LoginUsuario {
     @NotBlank
     private String password;
     
-    //Getter & Setter
+    //Getters and setters
     public String getNombreUsuario() {
         return nombreUsuario;
     }

@@ -13,7 +13,6 @@ import lombok.Setter;
 @Getter @Setter
 @Entity
 public class Persona implements Serializable {
-    //Genera un ID de forma auto
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -3,7 +3,7 @@ package com.portfolio.cristian.Security.Controller;
 public class Mensaje {
     private String mensaje;
 
-    //Constructor
+    //Constructores
     public Mensaje() {
     }
 
@@ -11,7 +11,7 @@ public class Mensaje {
         this.mensaje = mensaje;
     }
 
-    //Getter y Setter
+    //Getters and setters
     public String getMensaje() {
         return mensaje;
     }

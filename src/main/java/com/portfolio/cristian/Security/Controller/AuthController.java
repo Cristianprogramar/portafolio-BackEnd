@@ -97,7 +97,7 @@ public class AuthController {
             JwtDto jwtDto = new JwtDto(jwt, userDetails.getUsername(), userDetails.getAuthorities());
 
             return new ResponseEntity(jwtDto, HttpStatus.OK);
-        } //Manejo de errores al loguearse
+        }
         catch (AuthenticationException ex) {
             if (ex instanceof BadCredentialsException) {
                 return new ResponseEntity(new Mensaje("Contraseña incorrecta."), HttpStatus.UNAUTHORIZED);

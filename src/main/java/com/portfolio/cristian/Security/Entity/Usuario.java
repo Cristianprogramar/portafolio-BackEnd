@@ -47,7 +47,7 @@ public class Usuario {
         this.password = password;
     }
     
-    //Getter Y Setter
+    //Getters and setters
     public int getId() {
         return id;
     }

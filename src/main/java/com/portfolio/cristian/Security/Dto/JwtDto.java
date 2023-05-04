@@ -9,14 +9,14 @@ public class JwtDto {
     private String nombreUsuario;
     private Collection <? extends GrantedAuthority> authorities;
     
-    //Constructor
+    //Constructores
     public JwtDto(String token, String nombreUsuario, Collection<? extends GrantedAuthority> authorities) {
         this.token = token;
         this.nombreUsuario = nombreUsuario;
         this.authorities = authorities;
     }
     
-    //Getters and Setters
+    //Getters and setters
     public String getToken() {
         return token;
     }

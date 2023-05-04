@@ -1,16 +1,24 @@
 package com.portfolio.cristian.Entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
 
 @Entity
 public class Experience {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    
+    @Size(min = 5 ,max = 100, message = "Debe ingresar al menos 5 caracteres.")
+    @Column(length = 50)
     private String nameE;
+    
+    @Size(min = 10 ,max = 500, message = "Debe ingresar al menos 10 caracteres.")
+    @Column(length = 1000)
     private String descriptionE;
     
     //Constructores
