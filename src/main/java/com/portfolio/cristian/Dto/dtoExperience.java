@@ -3,7 +3,6 @@ package com.portfolio.cristian.Dto;
 import javax.validation.constraints.NotBlank;
 
 public class dtoExperience {
-    
     @NotBlank
     private String nameE;
     @NotBlank

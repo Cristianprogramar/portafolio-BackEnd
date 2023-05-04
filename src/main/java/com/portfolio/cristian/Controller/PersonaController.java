@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin(origins = "http://localhost:4200")
 
 public class PersonaController {
-    
     @Autowired IPersonaService ipersonaService;
     
     //Traigo a la persona

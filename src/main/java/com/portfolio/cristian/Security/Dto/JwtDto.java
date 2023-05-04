@@ -4,7 +4,6 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 
 public class JwtDto {
-    
     private String token;
     private String bearer = "Bearer";
     private String nombreUsuario;

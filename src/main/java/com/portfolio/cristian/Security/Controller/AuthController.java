@@ -34,7 +34,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/auth")
 @CrossOrigin
 public class AuthController {
-
     @Autowired
     PasswordEncoder passwordEncoder;
 
@@ -51,7 +50,7 @@ public class AuthController {
     JwtProvider jwtProvider;
 
     @PostMapping("/new")
-    public ResponseEntity <?> nuevo(@Valid @RequestBody NuevoUsuario nuevoUsuario, BindingResult bindingResult) {
+    public ResponseEntity<?> nuevo(@Valid @RequestBody NuevoUsuario nuevoUsuario, BindingResult bindingResult) {
 
         if (bindingResult.hasErrors()) {
             return new ResponseEntity(new Mensaje("Los campos son incorrectos."), HttpStatus.BAD_REQUEST);
@@ -98,15 +97,11 @@ public class AuthController {
             JwtDto jwtDto = new JwtDto(jwt, userDetails.getUsername(), userDetails.getAuthorities());
 
             return new ResponseEntity(jwtDto, HttpStatus.OK);
-        } 
-        
-        //Manejo de errores al loguearse
+        } //Manejo de errores al loguearse
         catch (AuthenticationException ex) {
             if (ex instanceof BadCredentialsException) {
                 return new ResponseEntity(new Mensaje("Contraseña incorrecta."), HttpStatus.UNAUTHORIZED);
-            } 
-            
-            else {
+            } else {
                 return new ResponseEntity(new Mensaje("No se pudo encontrar tu cuenta."), HttpStatus.UNAUTHORIZED);
             }
         }

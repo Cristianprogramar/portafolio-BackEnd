@@ -1,7 +1,6 @@
 package com.portfolio.cristian.Security.Controller;
 
 public class Mensaje {
-
     private String mensaje;
 
     //Constructor

@@ -4,7 +4,6 @@ import com.portfolio.cristian.Entity.Persona;
 import java.util.List;
 
 public interface IPersonaService {
-    
     //Traer una lista de personas
     public List<Persona> getPersona();
     

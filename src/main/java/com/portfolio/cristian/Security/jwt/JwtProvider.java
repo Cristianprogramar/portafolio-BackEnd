@@ -16,7 +16,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class JwtProvider {
-
     private final static Logger logger = LoggerFactory.getLogger(JwtProvider.class);
 
     @Value("${jwt.secret}")
@@ -40,25 +39,15 @@ public class JwtProvider {
         try {
             Jwts.parser().setSigningKey(secret).parseClaimsJws(token);
             return true;
-        } 
-        
-        catch (MalformedJwtException e) {
+        } catch (MalformedJwtException e) {
             logger.error("El token está mal formado.");
-        } 
-        
-        catch (UnsupportedJwtException e) {
+        } catch (UnsupportedJwtException e) {
             logger.error("Este token no es soportado.");
-        } 
-        
-        catch (ExpiredJwtException e) {
+        } catch (ExpiredJwtException e) {
             logger.error("El token expiro.");
-        } 
-        
-        catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException e) {
             logger.error("El token es invalido.");
-        } 
-        
-        catch (SignatureException e) {
+        } catch (SignatureException e) {
             logger.error("La firma es invalida.");
         }
         return false;

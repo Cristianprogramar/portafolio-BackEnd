@@ -24,11 +24,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("workexp")
 @CrossOrigin(origins = "http://localhost:4200")
 public class CExperience {
-    
     @Autowired
     SExperience sExperience;
     
-    @GetMapping("/lista")
+    @GetMapping("/list")
     public ResponseEntity<List<Experience>> list(){
         List<Experience> list = sExperience.list();
         return new ResponseEntity(list, HttpStatus.OK);
