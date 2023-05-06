@@ -12,10 +12,8 @@ public class Experience {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     
-    @Column(length = 50)
     private String nameE;
     
-    @Column(length = 1000)
     private String descriptionE;
     
     //Constructores
