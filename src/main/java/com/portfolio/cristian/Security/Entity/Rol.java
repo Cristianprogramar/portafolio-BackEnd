@@ -14,6 +14,7 @@ public class Rol {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    
     @NotNull
     @Enumerated(EnumType.STRING)
     private RolNombre rolNombre;

@@ -1,9 +1,9 @@
 package com.portfolio.cristian.Controller;
 
-import com.portfolio.cristian.Dto.dtoExperience;
-import com.portfolio.cristian.Entity.Experience;
+import com.portfolio.cristian.Dto.dtoProjects;
+import com.portfolio.cristian.Entity.Projects;
 import com.portfolio.cristian.Security.Controller.Mensaje;
-import com.portfolio.cristian.Service.SExperience;
+import com.portfolio.cristian.Service.SProjects;
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,72 +20,72 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("experience")
+@RequestMapping("projects")
 @CrossOrigin(origins = "http://localhost:4200")
-public class CExperience {
+public class CProjects {
     @Autowired
-    SExperience sExperience;
+    SProjects sProjects;
 
-    //Obtiene una lista de todas las experiencias
+    //Obtiene una lista de todos los proyectos
     @GetMapping("/list")
-    public ResponseEntity<List<Experience>> list() {
-        List<Experience> list = sExperience.list();
+    public ResponseEntity<List<Projects>> list() {
+        List<Projects> list = sProjects.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
 
-    //Obtiene una experiencia por ID
+    //Obtiene un proyecto por ID
     @GetMapping("/detail/{id}")
-    public ResponseEntity<Experience> getById(@PathVariable("id") int id) {
-        if (!sExperience.existsById(id)) {
+    public ResponseEntity<Projects> getById(@PathVariable("id") int id) {
+        if (!sProjects.existsById(id)) {
             return new ResponseEntity(new Mensaje("No se encontró el ID."), HttpStatus.NOT_FOUND);
         }
-        Experience experience = sExperience.getOne(id).get();
-        return new ResponseEntity(experience, HttpStatus.OK);
+        Projects projects = sProjects.getOne(id).get();
+        return new ResponseEntity(projects, HttpStatus.OK);
     }
 
-    //Elimina una experiencia por ID
+    //Elimina un proyecto por ID
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int id) {
-        sExperience.delete(id);
-        return new ResponseEntity(new Mensaje("La experiencia fue eliminada."), HttpStatus.OK);
+        sProjects.delete(id);
+        return new ResponseEntity(new Mensaje("El proyecto fue eliminado."), HttpStatus.OK);
     }
 
-    //Crea una nueva experiencia
+    //Crea un nuevo proyecto
     @PostMapping("/create")
-    public ResponseEntity<?> create(@RequestBody dtoExperience dtoexp) {
-        if (StringUtils.isBlank(dtoexp.getNameE())) {
+    public ResponseEntity<?> create(@RequestBody dtoProjects dtopro) {
+        if (StringUtils.isBlank(dtopro.getNameP())) {
             return new ResponseEntity(new Mensaje("Los campos son obligatorios."), HttpStatus.BAD_REQUEST);
         }
 
-        if (StringUtils.isBlank(dtoexp.getDescriptionE())) {
+        if (StringUtils.isBlank(dtopro.getDescriptionP())) {
             return new ResponseEntity(new Mensaje("Los campos son obligatorios."), HttpStatus.BAD_REQUEST);
         }
 
-        Experience experience = new Experience(dtoexp.getNameE(), dtoexp.getDescriptionE());
-        sExperience.save(experience);
+        Projects projects = new Projects(dtopro.getNameP(), dtopro.getDescriptionP());
+        sProjects.save(projects);
 
-        return new ResponseEntity(new Mensaje("Experiencia agregada."), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("Proyecto agregado."), HttpStatus.OK);
     }
 
-    //Actualiza una experiencia por ID
+    //Actualiza un proyecto por ID
     @PutMapping("/update/{id}")
-    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody dtoExperience dtoexp) {
-        if (!sExperience.existsById(id)) {
+    public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody dtoProjects dtopro) {
+        if (!sProjects.existsById(id)) {
             return new ResponseEntity(new Mensaje("Ya existe el ID."), HttpStatus.BAD_REQUEST);
         }
-        if (StringUtils.isBlank(dtoexp.getNameE())) {
+        if (StringUtils.isBlank(dtopro.getNameP())) {
             return new ResponseEntity(new Mensaje("Los campos son obligatorios."), HttpStatus.BAD_REQUEST);
         }
 
-        if (StringUtils.isBlank(dtoexp.getDescriptionE())) {
+        if (StringUtils.isBlank(dtopro.getDescriptionP())) {
             return new ResponseEntity(new Mensaje("Los campos son obligatorios."), HttpStatus.BAD_REQUEST);
         }
 
-        Experience experience = sExperience.getOne(id).get();
-        experience.setNameE(dtoexp.getNameE());
-        experience.setDescriptionE(dtoexp.getDescriptionE());
+        Projects projects = sProjects.getOne(id).get();
+        projects.setNameP(dtopro.getNameP());
+        projects.setDescriptionP(dtopro.getDescriptionP());
 
-        sExperience.save(experience);
-        return new ResponseEntity(new Mensaje("La experiencia fue actualizada."), HttpStatus.OK);
+        sProjects.save(projects);
+        return new ResponseEntity(new Mensaje("El proyecto fue actualizado."), HttpStatus.OK);
     }
 }
