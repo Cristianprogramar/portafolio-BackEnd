@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/hys")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://argentinaprograma-f1d32.web.app")
 public class CHys {
     @Autowired
     SHys sHys;
