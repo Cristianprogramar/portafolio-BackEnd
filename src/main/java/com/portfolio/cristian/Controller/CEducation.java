@@ -20,64 +20,56 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("education")
+@RequestMapping("/education")
 @CrossOrigin(origins = "http://localhost:4200")
 public class CEducation {
     @Autowired
     SEducation sEducation;
 
-    //Obtiene una lista de todas las educaciones
+    //Obtener una lista de todas las educaciones
     @GetMapping("/list")
     public ResponseEntity<List<Education>> list() {
         List<Education> list = sEducation.list();
         return new ResponseEntity(list, HttpStatus.OK);
     }
 
-    //Obtiene una educación por ID
+    //Obtener una educación por ID
     @GetMapping("/detail/{id}")
     public ResponseEntity<Education> getById(@PathVariable("id") int id) {
         if (!sEducation.existsById(id)) {
-            return new ResponseEntity(new Mensaje("No se encontró el ID."), HttpStatus.NOT_FOUND);
+            return new ResponseEntity(new Mensaje("No se encontró esta educación."), HttpStatus.NOT_FOUND);
         }
         Education education = sEducation.getOne(id).get();
         return new ResponseEntity(education, HttpStatus.OK);
     }
 
-    //Elimina una educación por ID
+    //Eliminar una educación por ID
     @DeleteMapping("/delete/{id}")
     public ResponseEntity<?> delete(@PathVariable("id") int id) {
         sEducation.delete(id);
         return new ResponseEntity(new Mensaje("La educación fue eliminada."), HttpStatus.OK);
     }
 
-    //Crea una nueva educación
+    //Crear una nueva educación
     @PostMapping("/create")
     public ResponseEntity<?> create(@RequestBody dtoEducation dtoedu) {
         if (StringUtils.isBlank(dtoedu.getNameEdu())) {
             return new ResponseEntity(new Mensaje("Los campos son obligatorios."), HttpStatus.BAD_REQUEST);
         }
 
-        if (StringUtils.isBlank(dtoedu.getDescriptionEdu())) {
-            return new ResponseEntity(new Mensaje("Los campos son obligatorios."), HttpStatus.BAD_REQUEST);
-        }
-
         Education education = new Education(dtoedu.getNameEdu(), dtoedu.getDescriptionEdu());
         sEducation.save(education);
 
-        return new ResponseEntity(new Mensaje("Educación agregada."), HttpStatus.OK);
+        return new ResponseEntity(new Mensaje("La educación fue agregada."), HttpStatus.OK);
     }
 
-    //Actualiza una educación por ID
+    //Actualizar una educación por ID
     @PutMapping("/update/{id}")
     public ResponseEntity<?> update(@PathVariable("id") int id, @RequestBody dtoEducation dtoedu) {
         if (!sEducation.existsById(id)) {
-            return new ResponseEntity(new Mensaje("Ya existe el ID."), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("Ya existe esta educación."), HttpStatus.BAD_REQUEST);
         }
         if (StringUtils.isBlank(dtoedu.getNameEdu())) {
-            return new ResponseEntity(new Mensaje("Los campos son obligatorios."), HttpStatus.BAD_REQUEST);
-        }
-
-        if (StringUtils.isBlank(dtoedu.getDescriptionEdu())) {
             return new ResponseEntity(new Mensaje("Los campos son obligatorios."), HttpStatus.BAD_REQUEST);
         }
 

@@ -20,11 +20,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @CrossOrigin(origins = "http://localhost:4200")
 public class PersonaController {
-
     @Autowired
     IPersonaService ipersonaService;
 
-    //Traigo la lista de usuarios
+    //Traer la lista de usuarios
     @GetMapping("user/get")
     public List<Persona> getPersona() {
         List<Persona> personas = ipersonaService.getPersona();
@@ -34,7 +33,7 @@ public class PersonaController {
         return personas;
     }
 
-    //Creo la persona
+    //Crear la persona
     @PreAuthorize("hasRole('ADMIN')")
     @PostMapping("/user/create")
     public String createPersona(@RequestBody Persona persona) {
@@ -47,7 +46,7 @@ public class PersonaController {
         return "El usuario fue creado.";
     }
 
-    //Elimino la persona por ID
+    //Eliminar la persona por ID
     @PreAuthorize("hasRole('ADMIN')")
     @DeleteMapping("/user/delete/{id}")
     public ResponseEntity<String> deletePersona(@PathVariable Long id) {
@@ -59,7 +58,7 @@ public class PersonaController {
         }
     }
 
-    //Edito la persona por ID
+    //Editar la persona por ID
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("/user/edit/{id}")
     public Persona editPersona(@PathVariable Long id,
@@ -76,13 +75,13 @@ public class PersonaController {
         return persona;
     }
 
-    //Traigo mi nombre a Angular
+    //Traer mi nombre al front
     @GetMapping("/user/get/profile")
     public Persona findPersona() {
         return ipersonaService.findPersona((long) 1);
     }
 
-    //Manejo de excepciones
+    //Manejar las excepciones
     @ExceptionHandler(IllegalArgumentException.class)
     public String handleIllegalArgumentException(IllegalArgumentException ex) {
         return ex.getMessage();

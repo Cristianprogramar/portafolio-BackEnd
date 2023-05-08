@@ -61,7 +61,7 @@ public class AuthController {
         }
 
         if (usuarioService.existsByEmail(nuevoUsuario.getEmail())) {
-            return new ResponseEntity(new Mensaje("Ya existe este correo."), HttpStatus.BAD_REQUEST);
+            return new ResponseEntity(new Mensaje("Este correo ya existe."), HttpStatus.BAD_REQUEST);
         }
 
         Usuario usuario = new Usuario(nuevoUsuario.getNombre(), nuevoUsuario.getNombreUsuario(),
@@ -78,7 +78,7 @@ public class AuthController {
         usuario.setRoles(roles);
         usuarioService.save(usuario);
 
-        return new ResponseEntity(new Mensaje("El usuario se guardo."), HttpStatus.CREATED);
+        return new ResponseEntity(new Mensaje("El usuario fue guardado."), HttpStatus.CREATED);
     }
 
     //Sistema de login
@@ -100,7 +100,7 @@ public class AuthController {
         }
         catch (AuthenticationException ex) {
             if (ex instanceof BadCredentialsException) {
-                return new ResponseEntity(new Mensaje("Contraseña incorrecta."), HttpStatus.UNAUTHORIZED);
+                return new ResponseEntity(new Mensaje("La contraseña es incorrecta."), HttpStatus.UNAUTHORIZED);
             } else {
                 return new ResponseEntity(new Mensaje("No se pudo encontrar tu cuenta."), HttpStatus.UNAUTHORIZED);
             }
