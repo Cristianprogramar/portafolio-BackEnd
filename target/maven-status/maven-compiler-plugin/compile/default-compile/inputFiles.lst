@@ -7,8 +7,6 @@ C:\Users\crist\OneDrive\Escritorio\YoProgramo\portafolio-BackEnd\src\main\java\c
 C:\Users\crist\OneDrive\Escritorio\YoProgramo\portafolio-BackEnd\src\main\java\com\portfolio\cristian\Controller\CProjects.java
 C:\Users\crist\OneDrive\Escritorio\YoProgramo\portafolio-BackEnd\src\main\java\com\portfolio\cristian\Entity\Education.java
 C:\Users\crist\OneDrive\Escritorio\YoProgramo\portafolio-BackEnd\src\main\java\com\portfolio\cristian\Security\Dto\NuevoUsuario.java
-C:\Users\crist\OneDrive\Escritorio\YoProgramo\portafolio-BackEnd\src\main\java\com\portfolio\cristian\Interface\IPersonaService.java
-C:\Users\crist\OneDrive\Escritorio\YoProgramo\portafolio-BackEnd\src\main\java\com\portfolio\cristian\Controller\hys.java
 C:\Users\crist\OneDrive\Escritorio\YoProgramo\portafolio-BackEnd\src\main\java\com\portfolio\cristian\Security\Entity\Rol.java
 C:\Users\crist\OneDrive\Escritorio\YoProgramo\portafolio-BackEnd\src\main\java\com\portfolio\cristian\Entity\Hys.java
 C:\Users\crist\OneDrive\Escritorio\YoProgramo\portafolio-BackEnd\src\main\java\com\portfolio\cristian\Security\Controller\AuthController.java
@@ -29,6 +27,7 @@ C:\Users\crist\OneDrive\Escritorio\YoProgramo\portafolio-BackEnd\src\main\java\c
 C:\Users\crist\OneDrive\Escritorio\YoProgramo\portafolio-BackEnd\src\main\java\com\portfolio\cristian\CristianApplication.java
 C:\Users\crist\OneDrive\Escritorio\YoProgramo\portafolio-BackEnd\src\main\java\com\portfolio\cristian\Security\Controller\Mensaje.java
 C:\Users\crist\OneDrive\Escritorio\YoProgramo\portafolio-BackEnd\src\main\java\com\portfolio\cristian\Entity\Projects.java
+C:\Users\crist\OneDrive\Escritorio\YoProgramo\portafolio-BackEnd\src\main\java\com\portfolio\cristian\Dto\dtoPersona.java
 C:\Users\crist\OneDrive\Escritorio\YoProgramo\portafolio-BackEnd\src\main\java\com\portfolio\cristian\Repository\RProjects.java
 C:\Users\crist\OneDrive\Escritorio\YoProgramo\portafolio-BackEnd\src\main\java\com\portfolio\cristian\Controller\PersonaController.java
 C:\Users\crist\OneDrive\Escritorio\YoProgramo\portafolio-BackEnd\src\main\java\com\portfolio\cristian\Controller\CEducation.java

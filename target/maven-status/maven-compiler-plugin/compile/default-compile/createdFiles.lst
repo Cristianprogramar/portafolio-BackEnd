@@ -1,5 +1,4 @@
 com\portfolio\cristian\Security\jwt\JwtProvider.class
-com\portfolio\cristian\Controller\hys.class
 com\portfolio\cristian\Security\Repository\iRolRepository.class
 com\portfolio\cristian\Controller\CProjects.class
 com\portfolio\cristian\Security\Entity\Usuario.class
@@ -21,12 +20,12 @@ com\portfolio\cristian\Security\Dto\JwtDto.class
 com\portfolio\cristian\Service\ImpPersonaService.class
 com\portfolio\cristian\Controller\CExperience.class
 com\portfolio\cristian\Dto\dtoProjects.class
+com\portfolio\cristian\Dto\dtoPersona.class
 com\portfolio\cristian\Security\Service\RolService.class
 com\portfolio\cristian\Service\SExperience.class
 com\portfolio\cristian\Repository\RExperience.class
 com\portfolio\cristian\Security\Repository\iUsuarioRepository.class
 com\portfolio\cristian\Dto\dtoExperience.class
-com\portfolio\cristian\Interface\IPersonaService.class
 com\portfolio\cristian\Entity\Projects.class
 com\portfolio\cristian\Security\Controller\AuthController.class
 com\portfolio\cristian\Repository\RHys.class
